@@ -1,5 +1,5 @@
 {
-  "name": "RSS 2 - Open Source",
+  "name": "RSS a linkedin (mondodb)",
   "nodes": [
     {
       "parameters": {
@@ -10,11 +10,31 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.9,
       "position": [
-        -2040,
-        680
+        -500,
+        660
       ],
-      "id": "dc09942d-36eb-4e43-ba01-d52aee39092d",
+      "id": "a4f3d195-d0e0-461b-bf7e-175fbf4fa5b4",
       "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.0-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -500,
+        860
+      ],
+      "id": "7faf74b3-b263-475c-bf7e-d59aa32d669b",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "9KMVOu6vEVg8Q1M3",
+          "name": "Google Gemini(PaLM) Api CIAP"
+        }
+      }
     },
     {
       "parameters": {
@@ -26,19 +46,21 @@
                 2,
                 3,
                 4,
-                0
+                0,
+                5
               ],
-              "triggerAtHour": 15
+              "triggerAtHour": 23,
+              "triggerAtMinute": 44
             }
           ]
         }
       },
-      "id": "9873fd81-6f7c-4c37-9a4d-3962d02d42fc",
+      "id": "b05ec33e-4af0-4b90-829b-594747d899ce",
       "name": "Schedule Trigger",
       "type": "n8n-nodes-base.scheduleTrigger",
       "position": [
-        -4720,
-        880
+        -3180,
+        860
       ],
       "typeVersion": 1.2
     },
@@ -49,12 +71,12 @@
           "ignoreSSL": true
         }
       },
-      "id": "76956a45-8eef-4a5c-8a9e-c9beed55eda0",
+      "id": "9df3f8b9-f878-44a4-a20a-8de6d58b51b4",
       "name": "RSS Read Testing Catalog",
       "type": "n8n-nodes-base.rssFeedRead",
       "position": [
-        -4500,
-        1080
+        -2960,
+        1060
       ],
       "typeVersion": 1.1
     },
@@ -96,12 +118,12 @@
         },
         "options": {}
       },
-      "id": "db028c0e-fe19-4e98-902a-a8ac0cc2c8a0",
+      "id": "5faa1621-68a9-43a3-9931-3b3b8364f2e0",
       "name": "Transform date",
       "type": "n8n-nodes-base.set",
       "position": [
-        -4060,
-        880
+        -2520,
+        860
       ],
       "typeVersion": 3.4
     },
@@ -129,12 +151,12 @@
         },
         "options": {}
       },
-      "id": "644d804c-67ef-474e-a3bd-330d10bc2b4f",
+      "id": "c03ec37f-8748-4c29-b14e-929fc8ecd92c",
       "name": "Filter by date (more than 7 days)",
       "type": "n8n-nodes-base.filter",
       "position": [
-        -3840,
-        800
+        -2300,
+        780
       ],
       "typeVersion": 2.2
     },
@@ -150,23 +172,23 @@
         },
         "options": {}
       },
-      "id": "cea255eb-6606-4fe4-bb71-8f3c5bc2a30e",
+      "id": "fb491238-4356-46b6-9759-0fcd659eafed",
       "name": "Sort by date",
       "type": "n8n-nodes-base.sort",
       "position": [
-        -3620,
-        800
+        -2080,
+        780
       ],
       "typeVersion": 1
     },
     {
       "parameters": {},
-      "id": "89c8a98b-9bb8-45bc-b944-020e36d29813",
+      "id": "62701309-8562-4d5a-9457-bcb04509081b",
       "name": "Limit news to x",
       "type": "n8n-nodes-base.limit",
       "position": [
-        -3400,
-        800
+        -1860,
+        780
       ],
       "typeVersion": 1
     },
@@ -174,12 +196,12 @@
       "parameters": {
         "numberInputs": 3
       },
-      "id": "927541f7-32ba-41d8-97a0-4a3c8e53ed85",
+      "id": "0684a24e-50d4-4fca-acc3-e8cd34653ba7",
       "name": "Merge",
       "type": "n8n-nodes-base.merge",
       "position": [
-        -4280,
-        880
+        -2740,
+        860
       ],
       "typeVersion": 3
     },
@@ -188,12 +210,12 @@
         "url": "https://www.marktechpost.com/feed/",
         "options": {}
       },
-      "id": "f0488975-2c47-4a21-9982-efc9a8266c79",
+      "id": "b64336d8-a6ee-4ba9-9723-32b0610afa9e",
       "name": "RSS Read marktechpost",
       "type": "n8n-nodes-base.rssFeedRead",
       "position": [
-        -4500,
-        880
+        -2960,
+        860
       ],
       "typeVersion": 1.1
     },
@@ -204,12 +226,12 @@
         "width": 500,
         "color": 4
       },
-      "id": "1344791d-b888-40ea-93ff-9880124839c9",
+      "id": "4c69b765-0ca9-4687-aea2-d2245158c1f1",
       "name": "Sticky Note",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -4600,
-        560
+        -3060,
+        540
       ],
       "typeVersion": 1
     },
@@ -220,12 +242,12 @@
         "width": 640,
         "color": 5
       },
-      "id": "5a4e8581-d636-49ee-a539-3d6c063d1813",
+      "id": "148ea040-113d-41fc-ac64-7468908e1582",
       "name": "Sticky Note1",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -3880,
-        540
+        -2340,
+        520
       ],
       "typeVersion": 1
     },
@@ -238,41 +260,61 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.9,
       "position": [
-        -3060,
-        660
+        -1520,
+        640
       ],
-      "id": "550f2436-541d-493d-b115-6e803222b5d9",
+      "id": "d2d88dc2-7e69-44d9-ab3f-45d9e77ff54f",
       "name": "AI Agent1"
     },
     {
       "parameters": {
-        "content": "# Etapa de IA: usando el API de Mistral (Open Source)\n\n## Modulo de análisis de contenido",
+        "modelName": "models/gemini-2.0-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -1520,
+        840
+      ],
+      "id": "fc267b3c-09d0-4b05-b8ba-f4e708ba4760",
+      "name": "Google Gemini Chat Model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "9KMVOu6vEVg8Q1M3",
+          "name": "Google Gemini(PaLM) Api CIAP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# Etapa de IA: usando el API de Gemini\n\n## Modulo de análisis de contenido",
         "height": 560,
         "width": 680,
         "color": 3
       },
-      "id": "7739ff7c-33d6-4511-96fb-cba800a1fe1b",
+      "id": "9e26b76b-326f-4f38-b9a4-e0c08e1c2c66",
       "name": "Sticky Note2",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -3160,
-        460
+        -1620,
+        440
       ],
       "typeVersion": 1
     },
     {
       "parameters": {
-        "content": "# Etapa de IA: usando el API de Mistral (Open Source)\n\n## Modulo de obtención de hashtags",
+        "content": "# Etapa de IA: usando el API de Gemini\n\n## Modulo de obtención de hashtags",
         "height": 560,
         "width": 680,
         "color": 3
       },
-      "id": "1380243e-dd86-4143-ac93-1165b1b48851",
+      "id": "1375609b-25cc-4d37-989f-c614531d566e",
       "name": "Sticky Note3",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -2440,
-        460
+        -900,
+        440
       ],
       "typeVersion": 1
     },
@@ -286,10 +328,10 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.1,
       "position": [
-        -1680,
-        200
+        -160,
+        180
       ],
-      "id": "40eefc5e-d071-4c69-9a80-132098c776b8",
+      "id": "d9b4876e-80fd-4af7-b8c1-b8f1d268590c",
       "name": "Information"
     },
     {
@@ -327,10 +369,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -3240,
-        200
+        -1700,
+        180
       ],
-      "id": "fee6cbf4-2982-4034-9a74-b030f95061b9",
+      "id": "e37486e3-924e-4aa2-86ba-896dce1e2d4f",
       "name": "Information2"
     },
     {
@@ -350,10 +392,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2900,
-        1260
+        -1360,
+        1240
       ],
-      "id": "543ab945-a2cf-4ff3-91f1-674f1de69721",
+      "id": "5989356e-ecce-4bc0-9cfa-bf124a38e3be",
       "name": "Information3"
     },
     {
@@ -364,10 +406,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -2240,
-        680
+        -700,
+        660
       ],
-      "id": "e28cc4df-8433-43c4-be37-88ea65df0b39",
+      "id": "19e76c44-4c09-49aa-8707-efffff5ace69",
       "name": "Code1"
     },
     {
@@ -379,10 +421,10 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.1,
       "position": [
-        -2420,
-        680
+        -880,
+        660
       ],
-      "id": "88a8ccbc-70a2-4147-a879-de500bf0e95f",
+      "id": "a014fea8-d0cb-4ac5-9ade-43fb9296f1db",
       "name": "Information1"
     },
     {
@@ -402,10 +444,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2340,
-        320
+        -800,
+        280
       ],
-      "id": "d2303bec-b1e9-445a-a8d4-1fff32120590",
+      "id": "5c28e78f-4d79-4e8f-b8e3-b6bff209818e",
       "name": "Edit Fields"
     },
     {
@@ -420,10 +462,10 @@
       "type": "n8n-nodes-base.linkedIn",
       "typeVersion": 1,
       "position": [
-        1540,
-        280
+        3080,
+        260
       ],
-      "id": "340d3081-bb6c-431c-b4d0-b70ef1bc1100",
+      "id": "8676bdbe-a615-4cf6-bc1a-bfc5338a99e2",
       "name": "LinkedIn",
       "credentials": {
         "linkedInCommunityManagementOAuth2Api": {
@@ -442,10 +484,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1320,
-        20
+        2860,
+        0
       ],
-      "id": "ced6e82b-6f10-454c-9b82-9b977adddd30",
+      "id": "92b098e8-d713-4fb8-9889-1ddbd3557e87",
       "name": "Sticky Note5"
     },
     {
@@ -458,10 +500,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        2000,
-        20
+        3540,
+        0
       ],
-      "id": "84823a2c-909b-4b4b-824b-144fe0e5d26c",
+      "id": "a775c3da-237c-47aa-929a-e63bbc390860",
       "name": "Sticky Note6"
     },
     {
@@ -473,10 +515,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2080,
-        280
+        3620,
+        260
       ],
-      "id": "29efba0a-dc2d-4870-8307-1ad80e42e968",
+      "id": "110aa1df-ef11-4831-8041-759590caac9d",
       "name": "Conversión a enlace de LinkedIn"
     },
     {
@@ -500,10 +542,10 @@
       "name": "Generar QR",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        2380,
-        280
+        3920,
+        260
       ],
-      "id": "c81d40ad-0528-4678-b4f4-839a4311deb5",
+      "id": "f97db835-8ea8-4a68-b64c-f41a6a17a8fb",
       "typeVersion": 4.2
     },
     {
@@ -514,15 +556,30 @@
       "name": "Escribir archivo",
       "type": "n8n-nodes-base.writeBinaryFile",
       "position": [
-        2660,
-        280
+        4200,
+        260
       ],
-      "id": "195d5401-4083-4780-8dd4-50723163cb48",
+      "id": "1a2fd99a-9a62-4501-84f5-d1873640ccb6",
       "typeVersion": 1
     },
     {
       "parameters": {
-        "content": "# Etapa de IA: Generación de Imagen\n\n## Generación de Imagen mediante Mistral (Open Source) y conversión a PNG",
+        "operation": "toBinary",
+        "sourceProperty": "candidates[0].content.parts[0].inlineData.data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        2500,
+        260
+      ],
+      "id": "d0085e73-768e-451c-b9f7-199d4a6be6d9",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "content": "# Etapa de IA: Generación de Imagen\n\n## Generación de Imagen mediante Gemini 2.0 y conversión a PNG",
         "height": 540,
         "width": 680,
         "color": 4
@@ -530,164 +587,35 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        540,
-        20
+        2080,
+        0
       ],
-      "id": "59734acc-c80d-40f5-8db2-f115312ca4f0",
+      "id": "7c66499c-0252-4314-8d73-0d7e3db88fc8",
       "name": "Sticky Note10"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "https://api.mistral.ai/v1/agents",
+        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp-image-generation:generateContent",
         "authentication": "predefinedCredentialType",
-        "nodeCredentialType": "mistralCloudApi",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Accept",
-              "value": "application/json"
-            }
-          ]
-        },
+        "nodeCredentialType": "googlePalmApi",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "{\n  \"model\": \"mistral-medium-2505\",\n  \"name\": \"Image Generation Agent\",\n  \"description\": \"Agent used to generate images.\",\n  \"instructions\": \"Use the image generation tool when you have to create images.\",\n  \"tools\": [\n    {\n      \"type\": \"image_generation\"\n    }\n  ],\n  \"completion_args\": {\n    \"temperature\": 0.3,\n    \"top_p\": 0.95\n  }\n}",
-        "options": {
-          "redirect": {
-            "redirect": {}
-          }
-        }
+        "jsonBody": "={\n  \"contents\": [\n    {\n      \"role\": \"user\",\n      \"parts\": [\n        {\n          \"text\": \"{{ $json.output.slice(0, -2) }}\"\n        }\n      ]\n    }\n  ],\n  \"generationConfig\": {\n    \"responseModalities\": [\"Text\", \"Image\"]\n  }\n}",
+        "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        560,
-        280
+        2220,
+        260
       ],
-      "id": "bf158a7f-64ce-468c-9322-4d9ea97906eb",
+      "id": "cbbf150f-9687-4dd1-83f0-38eff84c5b85",
       "name": "Generación de Imagen1",
       "credentials": {
         "googlePalmApi": {
           "id": "4oDRxTpOIr5AefZt",
           "name": "Google Gemini(PaLM) Api account 2"
-        },
-        "mistralCloudApi": {
-          "id": "0uBOXjKCItdmLbhN",
-          "name": "Mistral Cloud account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "append",
-        "documentId": {
-          "__rl": true,
-          "value": "https://docs.google.com/spreadsheets/d/13Q6dJDpnuQBYiPvXRWElkhKT0c7MvfmeDmG8Gbz-1Cs/edit?usp=sharing",
-          "mode": "url"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": "gid=0",
-          "mode": "list",
-          "cachedResultName": "Hoja 1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/13Q6dJDpnuQBYiPvXRWElkhKT0c7MvfmeDmG8Gbz-1Cs/edit#gid=0"
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "Link_pub": "={{ $json.link }}",
-            "Title": "={{ $('Information').item.json.Titulo_original }}",
-            "Link_raw": "={{ $('Information').item.json.Enlace }}"
-          },
-          "matchingColumns": [],
-          "schema": [
-            {
-              "id": "Title",
-              "displayName": "Title",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Link_raw",
-              "displayName": "Link_raw",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Link_pub",
-              "displayName": "Link_pub",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.5,
-      "position": [
-        2400,
-        620
-      ],
-      "id": "9dbc32cd-b0c0-4b6c-8ae4-7fa6cee97377",
-      "name": "Google Sheets",
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "gHDZ1bBcTv3KGueR",
-          "name": "Google Sheets account 2"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "documentId": {
-          "__rl": true,
-          "value": "https://docs.google.com/spreadsheets/d/13Q6dJDpnuQBYiPvXRWElkhKT0c7MvfmeDmG8Gbz-1Cs/edit?usp=sharing",
-          "mode": "url"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": "gid=0",
-          "mode": "list",
-          "cachedResultName": "Hoja 1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/13Q6dJDpnuQBYiPvXRWElkhKT0c7MvfmeDmG8Gbz-1Cs/edit#gid=0"
-        },
-        "filtersUI": {
-          "values": [
-            {
-              "lookupColumn": "Link_raw",
-              "lookupValue": "={{ $json.Enlace }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.5,
-      "position": [
-        -1500,
-        200
-      ],
-      "id": "4305e7d8-7b82-429b-9a34-a3ba94edc5de",
-      "name": "Google Sheets1",
-      "alwaysOutputData": true,
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "gHDZ1bBcTv3KGueR",
-          "name": "Google Sheets account 2"
         }
       }
     },
@@ -703,7 +631,7 @@
           "conditions": [
             {
               "id": "04a473df-24f7-4dd6-aa55-0960263caa71",
-              "leftValue": "={{ $json.Link_raw }}",
+              "leftValue": "={{ $json.link_raw }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -719,10 +647,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1300,
-        200
+        260,
+        180
       ],
-      "id": "4e92d7b0-06a4-4637-b097-7a3adfcba0e6",
+      "id": "bd48032b-6498-4354-8f19-d61bea40e1fd",
       "name": "If exists"
     },
     {
@@ -732,10 +660,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -940,
-        220
+        600,
+        200
       ],
-      "id": "dcbb3dca-1fcd-477d-9e35-5bbf04816465",
+      "id": "cfd0dd24-08c5-43c3-8802-f35379a31b6b",
       "name": "Code"
     },
     {
@@ -749,25 +677,45 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.9,
       "position": [
-        -720,
-        220
+        820,
+        200
       ],
-      "id": "04de86c7-f8a2-4717-be18-a49b5d70da1a",
+      "id": "04c8f679-c900-462d-87c1-16730e4805b4",
       "name": "AI Agent2"
     },
     {
       "parameters": {
-        "content": "# Etapa de IA: usando el API de Mistral (Open Source)\n\n## Modulo de obtención de la publicación",
+        "modelName": "models/gemini-2.0-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        820,
+        380
+      ],
+      "id": "07cfa11d-bcbf-495f-a089-0a58060acb48",
+      "name": "Google Gemini Chat Model2",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "9KMVOu6vEVg8Q1M3",
+          "name": "Google Gemini(PaLM) Api CIAP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# Etapa de IA: usando el API de Gemini\n\n## Modulo de obtención de la publicación",
         "height": 540,
         "width": 680,
         "color": 3
       },
-      "id": "5239de3e-01ac-42cf-b0ec-125fc5516141",
+      "id": "615b1a2f-69f6-459d-b8f5-519549e233ed",
       "name": "Sticky Note4",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -1020,
-        40
+        520,
+        20
       ],
       "typeVersion": 1
     },
@@ -782,11 +730,31 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 1.9,
       "position": [
-        80,
-        240
+        1620,
+        220
       ],
-      "id": "29bdc367-7668-435d-91db-817f6fe197d6",
+      "id": "9ae09c17-f435-4766-94f6-1a379818fc22",
       "name": "AI Agent4"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.0-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1620,
+        420
+      ],
+      "id": "1ea930dc-5a43-420d-9ad3-7112095f0da1",
+      "name": "Google Gemini Chat Model4",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "9KMVOu6vEVg8Q1M3",
+          "name": "Google Gemini(PaLM) Api CIAP"
+        }
+      }
     },
     {
       "parameters": {
@@ -797,10 +765,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -200,
-        0
+        1340,
+        -20
       ],
-      "id": "eeef15b1-8bd4-4041-8c3d-355a1aeef709",
+      "id": "63bf8cd1-3f9e-4c23-b351-e55bccdc6d48",
       "name": "Sticky Note9"
     },
     {
@@ -810,10 +778,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -140,
-        240
+        1400,
+        220
       ],
-      "id": "4fb5c839-d56d-41c3-9bcf-bd7e495b4e47",
+      "id": "4b14ebcb-ca6e-4860-9fd2-c6f7668ed6cc",
       "name": "Limpieza de contenido de Noticia1"
     },
     {
@@ -821,204 +789,108 @@
         "url": "https://medium.com/feed/latinxinai",
         "options": {}
       },
-      "id": "f91be6dd-3afe-4294-88f7-2193d29d3579",
+      "id": "e920eff8-6484-4d28-8a62-feb122884df3",
       "name": "RSS LatinxinAI",
       "type": "n8n-nodes-base.rssFeedRead",
       "position": [
-        -4500,
-        680
+        -2960,
+        660
       ],
       "typeVersion": 1.1
     },
     {
       "parameters": {
-        "jsCode": "let texto = $input.first().json.output\n  .replace(/[\\n\\r\\t]/g, \" \")  // Reemplaza saltos de línea, retorno de carro y tabulaciones por espacio\n  .replace(/['\"\\\\]/g, \"\")      // Elimina comillas simples, dobles y barras invertidas\n  .replace(/\\s+/g, \" \")        // Reemplaza múltiples espacios por un solo espacio\n  .trim();                     // Elimina los espacios en blanco al inicio y al final\n\nreturn {\n  text: texto\n};"
+        "collection": "ciap",
+        "options": {},
+        "query": "={\"link_raw\": \"{{ $json.Enlace }}\"}"
       },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
+      "type": "n8n-nodes-base.mongoDb",
+      "typeVersion": 1.1,
       "position": [
-        380,
-        620
+        40,
+        180
       ],
-      "id": "414de422-566b-4ef1-a0b5-e7c5c873bc4f",
-      "name": "Limpieza de contenido de Noticia"
-    },
-    {
-      "parameters": {
-        "model": "open-mixtral-8x7b",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
-      "typeVersion": 1,
-      "position": [
-        -720,
-        440
-      ],
-      "id": "9aaee06c-42d5-425e-a65b-24bef78c056f",
-      "name": "Mistral Cloud Chat Model",
+      "id": "2aa323e0-349b-49c0-9961-8e411e43ea67",
+      "name": "MongoDB",
+      "alwaysOutputData": true,
       "credentials": {
-        "mistralCloudApi": {
-          "id": "0uBOXjKCItdmLbhN",
-          "name": "Mistral Cloud account"
+        "mongoDb": {
+          "id": "8XZ9b8cqUwkEKbPr",
+          "name": "MongoDB account"
         }
       }
     },
     {
       "parameters": {
-        "model": "open-mixtral-8x7b",
+        "operation": "insert",
+        "collection": "ciap",
+        "fields": "=title, link_raw, link_pub",
         "options": {}
       },
-      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
-      "typeVersion": 1,
+      "type": "n8n-nodes-base.mongoDb",
+      "typeVersion": 1.1,
       "position": [
-        -3060,
-        880
+        4240,
+        760
       ],
-      "id": "f0481f9e-4a5b-4d01-b435-67cf4923209f",
-      "name": "Mistral Cloud Chat Model1",
+      "id": "150cd29e-1749-4570-99c2-d6c7a0f00f5b",
+      "name": "MongoDB1",
       "credentials": {
-        "mistralCloudApi": {
-          "id": "0uBOXjKCItdmLbhN",
-          "name": "Mistral Cloud account"
+        "mongoDb": {
+          "id": "8XZ9b8cqUwkEKbPr",
+          "name": "MongoDB account"
         }
       }
     },
     {
       "parameters": {
-        "model": "open-mixtral-8x7b",
+        "mode": "combine",
+        "combineBy": "combineByPosition",
         "options": {}
       },
-      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
-      "typeVersion": 1,
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
       "position": [
-        -2040,
-        860
+        3840,
+        760
       ],
-      "id": "e1714f78-2224-4445-a62f-2122d800421f",
-      "name": "Mistral Cloud Chat Model2",
-      "credentials": {
-        "mistralCloudApi": {
-          "id": "0uBOXjKCItdmLbhN",
-          "name": "Mistral Cloud account"
-        }
-      }
+      "id": "beba48c2-adc1-4484-81d1-142ac5696365",
+      "name": "Merge1"
     },
     {
       "parameters": {
-        "model": "open-mixtral-8x7b",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
-      "typeVersion": 1,
-      "position": [
-        60,
-        460
-      ],
-      "id": "ebb5594c-957a-426f-8dc7-7aa19bf29eec",
-      "name": "Mistral Cloud Chat Model3",
-      "credentials": {
-        "mistralCloudApi": {
-          "id": "0uBOXjKCItdmLbhN",
-          "name": "Mistral Cloud account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "url": "=https://api.mistral.ai/v1/files/{{ $json.outputs[1].content[1].file_id }}/content",
-        "authentication": "predefinedCredentialType",
-        "nodeCredentialType": "mistralCloudApi",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
+        "assignments": {
+          "assignments": [
             {
-              "name": "Accept",
-              "value": "application/octet-stream"
+              "id": "2ba2e8ef-cc61-469d-9e11-90b813603478",
+              "name": "title",
+              "value": "={{ $json.Titulo_original }}",
+              "type": "string"
             },
             {
-              "name": "Accept-Encoding",
-              "value": "gzip, deflate, zstd"
+              "id": "ade51fa4-a004-4b50-8f26-6479bb360f01",
+              "name": "link_raw",
+              "value": "={{ $json.Enlace }}",
+              "type": "string"
+            },
+            {
+              "id": "224e72fa-68d2-4bb7-a425-d9a2fd27607c",
+              "name": "link_pub",
+              "value": "={{ $json.link }}",
+              "type": "string"
             }
           ]
         },
-        "options": {
-          "redirect": {
-            "redirect": {}
-          }
-        }
+        "options": {}
       },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
       "position": [
-        1000,
-        260
+        4040,
+        760
       ],
-      "id": "6c327b32-8d63-4ed6-8b4b-73bc7dab3c3b",
-      "name": "Generación de Imagen",
-      "credentials": {
-        "googlePalmApi": {
-          "id": "4oDRxTpOIr5AefZt",
-          "name": "Google Gemini(PaLM) Api account 2"
-        },
-        "mistralCloudApi": {
-          "id": "0uBOXjKCItdmLbhN",
-          "name": "Mistral Cloud account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.mistral.ai/v1/conversations",
-        "authentication": "predefinedCredentialType",
-        "nodeCredentialType": "mistralCloudApi",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Accept",
-              "value": "application/json"
-            }
-          ]
-        },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "inputs",
-              "value": "={{ $('Limpieza de contenido de Noticia').item.json.text }}"
-            },
-            {
-              "name": "stream",
-              "value": "false"
-            },
-            {
-              "name": "agent_id",
-              "value": "={{ $json.id }}"
-            }
-          ]
-        },
-        "options": {
-          "redirect": {
-            "redirect": {}
-          }
-        }
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        780,
-        400
-      ],
-      "id": "edf85549-2428-4cb9-b431-d6be76959bdc",
-      "name": "HTTP Request",
-      "retryOnFail": true,
-      "credentials": {
-        "mistralCloudApi": {
-          "id": "0uBOXjKCItdmLbhN",
-          "name": "Mistral Cloud account"
-        }
-      }
+      "id": "2a183337-861b-4e33-95cc-deb427309e32",
+      "name": "Edit Fields1"
     }
   ],
   "pinData": {},
@@ -1030,6 +902,17 @@
             "node": "Information",
             "type": "main",
             "index": 2
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
           }
         ]
       ]
@@ -1158,13 +1041,29 @@
         ]
       ]
     },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "Information": {
       "main": [
         [
           {
-            "node": "Google Sheets1",
+            "node": "MongoDB",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
           }
         ]
       ]
@@ -1244,7 +1143,7 @@
             "index": 0
           },
           {
-            "node": "Google Sheets",
+            "node": "Merge1",
             "type": "main",
             "index": 0
           }
@@ -1266,18 +1165,18 @@
       "main": [
         [
           {
-            "node": "HTTP Request",
+            "node": "Convert to File",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Google Sheets1": {
+    "Convert to File": {
       "main": [
         [
           {
-            "node": "If exists",
+            "node": "LinkedIn",
             "type": "main",
             "index": 0
           }
@@ -1318,12 +1217,23 @@
         ]
       ]
     },
-    "AI Agent4": {
-      "main": [
+    "Google Gemini Chat Model2": {
+      "ai_languageModel": [
         [
           {
-            "node": "Limpieza de contenido de Noticia",
-            "type": "main",
+            "node": "AI Agent2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent4",
+            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -1334,6 +1244,17 @@
         [
           {
             "node": "AI Agent4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent4": {
+      "main": [
+        [
+          {
+            "node": "Generación de Imagen1",
             "type": "main",
             "index": 0
           }
@@ -1351,77 +1272,33 @@
         ]
       ]
     },
-    "Mistral Cloud Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent2",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Mistral Cloud Chat Model1": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent1",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Mistral Cloud Chat Model2": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Mistral Cloud Chat Model3": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent4",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Limpieza de contenido de Noticia": {
+    "MongoDB": {
       "main": [
         [
           {
-            "node": "Generación de Imagen1",
+            "node": "If exists",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "HTTP Request": {
+    "Merge1": {
       "main": [
         [
           {
-            "node": "Generación de Imagen",
+            "node": "Edit Fields1",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Generación de Imagen": {
+    "Edit Fields1": {
       "main": [
         [
           {
-            "node": "LinkedIn",
+            "node": "MongoDB1",
             "type": "main",
             "index": 0
           }
@@ -1429,15 +1306,24 @@
       ]
     }
   },
-  "active": false,
+  "active": true,
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "timezone": "America/Guayaquil",
+    "callerPolicy": "workflowsFromSameOwner"
   },
-  "versionId": "61629817-2f5d-43e3-887d-9f3e78a6a84d",
+  "versionId": "2f115627-2c78-4963-90e5-6624b29a121a",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "8c2c429dd3943ee62e07d4501247518aac7a4e0ac2348a289df368ce47041939"
   },
-  "id": "y2EzBl2hnR0j4DRu",
-  "tags": []
+  "id": "maniSh0UmgXX8k4S",
+  "tags": [
+    {
+      "createdAt": "2025-05-05T20:28:22.814Z",
+      "updatedAt": "2025-05-05T20:28:22.814Z",
+      "id": "gvVTOTyDYvE5GHF0",
+      "name": "autoreboot"
+    }
+  ]
 }
