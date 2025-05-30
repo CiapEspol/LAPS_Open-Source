@@ -581,118 +581,6 @@
     },
     {
       "parameters": {
-        "operation": "append",
-        "documentId": {
-          "__rl": true,
-          "value": "https://docs.google.com/spreadsheets/d/13Q6dJDpnuQBYiPvXRWElkhKT0c7MvfmeDmG8Gbz-1Cs/edit?usp=sharing",
-          "mode": "url"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": "gid=0",
-          "mode": "list",
-          "cachedResultName": "Hoja 1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/13Q6dJDpnuQBYiPvXRWElkhKT0c7MvfmeDmG8Gbz-1Cs/edit#gid=0"
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "Link_pub": "={{ $json.link }}",
-            "Title": "={{ $('Information').item.json.Titulo_original }}",
-            "Link_raw": "={{ $('Information').item.json.Enlace }}"
-          },
-          "matchingColumns": [],
-          "schema": [
-            {
-              "id": "Title",
-              "displayName": "Title",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Link_raw",
-              "displayName": "Link_raw",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Link_pub",
-              "displayName": "Link_pub",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.5,
-      "position": [
-        2400,
-        620
-      ],
-      "id": "9dbc32cd-b0c0-4b6c-8ae4-7fa6cee97377",
-      "name": "Google Sheets",
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "gHDZ1bBcTv3KGueR",
-          "name": "Google Sheets account 2"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "documentId": {
-          "__rl": true,
-          "value": "https://docs.google.com/spreadsheets/d/13Q6dJDpnuQBYiPvXRWElkhKT0c7MvfmeDmG8Gbz-1Cs/edit?usp=sharing",
-          "mode": "url"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": "gid=0",
-          "mode": "list",
-          "cachedResultName": "Hoja 1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/13Q6dJDpnuQBYiPvXRWElkhKT0c7MvfmeDmG8Gbz-1Cs/edit#gid=0"
-        },
-        "filtersUI": {
-          "values": [
-            {
-              "lookupColumn": "Link_raw",
-              "lookupValue": "={{ $json.Enlace }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.5,
-      "position": [
-        -1500,
-        200
-      ],
-      "id": "4305e7d8-7b82-429b-9a34-a3ba94edc5de",
-      "name": "Google Sheets1",
-      "alwaysOutputData": true,
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "gHDZ1bBcTv3KGueR",
-          "name": "Google Sheets account 2"
-        }
-      }
-    },
-    {
-      "parameters": {
         "conditions": {
           "options": {
             "caseSensitive": true,
@@ -703,7 +591,7 @@
           "conditions": [
             {
               "id": "04a473df-24f7-4dd6-aa55-0960263caa71",
-              "leftValue": "={{ $json.Link_raw }}",
+              "leftValue": "={{ $json.link_raw }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -1019,6 +907,100 @@
           "name": "Mistral Cloud account"
         }
       }
+    },
+    {
+      "parameters": {
+        "collection": "ciap",
+        "options": {},
+        "query": "={\"link_raw\": \"{{ $json.Enlace }}\"}"
+      },
+      "type": "n8n-nodes-base.mongoDb",
+      "typeVersion": 1.1,
+      "position": [
+        -1500,
+        200
+      ],
+      "id": "ca58e365-a672-4021-8233-86e6cf2a4ab2",
+      "name": "MongoDB",
+      "alwaysOutputData": true,
+      "credentials": {
+        "mongoDb": {
+          "id": "8XZ9b8cqUwkEKbPr",
+          "name": "MongoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "insert",
+        "collection": "ciap",
+        "fields": "=title, link_raw, link_pub",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mongoDb",
+      "typeVersion": 1.1,
+      "position": [
+        2740,
+        780
+      ],
+      "id": "8ca61b97-3095-4b53-bfd4-f4e4e35b45cf",
+      "name": "MongoDB1",
+      "credentials": {
+        "mongoDb": {
+          "id": "8XZ9b8cqUwkEKbPr",
+          "name": "MongoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        2340,
+        780
+      ],
+      "id": "9d29dd36-edcc-456f-ac70-e8ce45260a02",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2ba2e8ef-cc61-469d-9e11-90b813603478",
+              "name": "title",
+              "value": "={{ $json.Titulo_original }}",
+              "type": "string"
+            },
+            {
+              "id": "ade51fa4-a004-4b50-8f26-6479bb360f01",
+              "name": "link_raw",
+              "value": "={{ $json.Enlace }}",
+              "type": "string"
+            },
+            {
+              "id": "224e72fa-68d2-4bb7-a425-d9a2fd27607c",
+              "name": "link_pub",
+              "value": "={{ $json.link }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2540,
+        780
+      ],
+      "id": "526d32a9-7e18-48af-b75e-fa3dff08ee35",
+      "name": "Edit Fields1"
     }
   ],
   "pinData": {},
@@ -1162,9 +1144,14 @@
       "main": [
         [
           {
-            "node": "Google Sheets1",
+            "node": "MongoDB",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
           }
         ]
       ]
@@ -1244,7 +1231,7 @@
             "index": 0
           },
           {
-            "node": "Google Sheets",
+            "node": "Merge1",
             "type": "main",
             "index": 0
           }
@@ -1267,17 +1254,6 @@
         [
           {
             "node": "HTTP Request",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Google Sheets1": {
-      "main": [
-        [
-          {
-            "node": "If exists",
             "type": "main",
             "index": 0
           }
@@ -1427,13 +1403,46 @@
           }
         ]
       ]
+    },
+    "MongoDB": {
+      "main": [
+        [
+          {
+            "node": "If exists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "MongoDB1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "62c8c648-abf1-444a-83b7-2f7710f1bafa",
+  "versionId": "7131f4a1-5fd6-4c05-b751-1bf3e51d68a2",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "8c2c429dd3943ee62e07d4501247518aac7a4e0ac2348a289df368ce47041939"
