@@ -1,40 +1,40 @@
-# 📰 LinkedIn News Auto-Publisher
+# 📰 Publicador automático de noticias en linkedin
 
-## Overview 📋
+## Resumen 📋
 Este proyecto es un publicador automatizado de noticias para LinkedIn. Utiliza fuentes RSS para obtener noticias, procesa el contenido con la API Gemini para generar resúmenes precisos y publica automáticamente en LinkedIn mediante su API.
 
 ---
 
-## How It Works
+## ¿Cómo funciona?
 
-### Architecture and Workflow ⚙️
+### Arquitectura del workflow ⚙️
 - **n8n:** Orquestación eficiente del flujo de trabajo con automatización.  
 - **RSS:** Fuentes de noticias como TechCrunch y MIT Technology Review.  
 - **Gemini API:** Generación dinámica de contenido y resúmenes precisos.  
 - **LinkedIn API:** Publicación automática en perfiles y páginas corporativas.
 
-### Content Processing 🧠
+### Procesamiento del contenido 🧠
 - Obtención de noticias a través de fuentes RSS.  
 - Procesamiento y generación de resúmenes con la API Gemini.  
 - Publicación automática en LinkedIn.
 
 ---
 
-## Key Benefits ✅
+## Beneficios clave ✅
 - Automatización completa del proceso de publicación de noticias.  
 - Generación dinámica de contenido preciso y relevante.  
 - Integración con fuentes de noticias confiables y publicación en una plataforma profesional.
 
 ---
 
-## Use Cases 💼
+## Casos de uso 💼
 - Automatización de la publicación de noticias para empresas y profesionales.  
 - Mantener perfiles y páginas corporativas actualizados con contenido relevante.  
 - Ahorro de tiempo en la gestión de contenido en redes sociales.
 
 ---
 
-## Requirements 👨‍💻
+## Requisitos 👨‍💻
 - Instancia de **n8n** (autohospedada o en la nube).  
 - Credenciales de la API Gemini.  
 - Configuración del bot de LinkedIn y credenciales API.  
@@ -42,7 +42,7 @@ Este proyecto es un publicador automatizado de noticias para LinkedIn. Utiliza f
 
 ---
 
-## Authors 👥
+## Autores 👥
 - Joel Choez  
 - Alan Bajaña  
 - Jaren Pazmiño  
